@@ -56,7 +56,7 @@ class UserController extends Controller
         $userLog->user_agent = $_SERVER['HTTP_USER_AGENT'];
         $userLog->save();
 
-        $user = UserLog::find($id);
+        $user = UserDetail::find($id);
         if($user){
             return view('previoud_address',['data' => $user]);
         }

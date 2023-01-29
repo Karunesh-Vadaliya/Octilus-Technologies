@@ -15,7 +15,8 @@ class CreateUserLogsTable extends Migration
     {
         Schema::create('user_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_details_id')->nullable();
+            $table->unsignedBigInteger('user_details_id');
+            $table->foreign('user_details_id')->references('id')->on('user_details')->onDelete('cascade');
             $table->string('ip_address')->nullable();
             $table->string('device_type')->nullable();
             $table->string('browser')->nullable();
